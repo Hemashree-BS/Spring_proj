@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: springboot-app
-          image: hemashree7/myapps:latest
+          image: hemashree7/mywebapppp:latest
           ports:
             - containerPort: 1234
           imagePullPolicy: Always
