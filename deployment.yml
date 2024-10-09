@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-app
+  labels:
+    app: springboot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springboot
+  template:
+    metadata:
+      labels:
+        app: springboot
+    spec:
+      containers:
+        - name: springboot-app
+          image: prabhash1710/sample1:latest
+          ports:
+            - containerPort: 1234
+          imagePullPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-service
+spec:
+  ports:
+    - port: 8080
+      targetPort: 1234
+      protocol: TCP
+  selector:
+    app: springboot
+  type: NodePort
