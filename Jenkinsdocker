@@ -17,8 +17,8 @@ pipeline {
             steps {
                 script {
                     sh 'docker build -t data .'
-                    sh 'docker tag data hemashree7/myapps:$BUILD_ID'
-                    sh 'docker tag data hemashree7/myapps:latest'
+                    sh 'docker tag data hemashree7/mywebappp:$BUILD_ID'
+                    sh 'docker tag data hemashree7/mywebappp:latest'
                 }
             }
         }
@@ -37,10 +37,10 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    sh 'docker push hemashree7/myapps:$BUILD_ID'
-                    sh 'docker push hemashree7/myapps:latest'
-                    sh 'docker rmi -f hemashree7/myapps:$BUILD_ID'
-                    sh 'docker rmi -f hemashree7/myapps:latest'
+                    sh 'docker push hemashree7/mywebappp:$BUILD_ID'
+                    sh 'docker push hemashree7/mywebappp:latest'
+                    sh 'docker rmi -f hemashree7/mywebappp:$BUILD_ID'
+                    sh 'docker rmi -f hemashree7/mywebappp:latest'
                 }
             }
         }
@@ -48,8 +48,8 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    sh 'docker rm -f myapps'
-                    sh 'docker run -it -d --name myapps -p 1234:1234 hemashree7/myapps:latest'
+                    sh 'docker rm -f mywebappp'
+                    sh 'docker run -it -d --name mywebappp -p 1234:1234 hemashree7/mywebappp:latest'
                 }
             }
         }
